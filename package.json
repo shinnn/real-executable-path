@@ -30,7 +30,7 @@
     "asynchronously"
   ],
   "dependencies": {
-    "pinkie-promise": "^1.0.0",
+    "pinkie-promise": "^2.0.0",
     "real-executable-path-callback": "^1.0.0"
   },
   "devDependencies": {
