@@ -1,6 +1,6 @@
 {
   "name": "real-executable-path",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find the first instance of an executable in the PATH, with expanding all symbolic links",
   "repository": "shinnn/real-executable-path",
   "author": "Shinnosuke Watanabe (https://github.com/shinnn)",
