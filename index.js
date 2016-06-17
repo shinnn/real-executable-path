@@ -4,11 +4,10 @@
 */
 'use strict';
 
-var realExecutablePathCallback = require('real-executable-path-callback');
-var PinkiePromise = require('pinkie-promise');
+const realExecutablePathCallback = require('real-executable-path-callback');
 
 module.exports = function realExecutablePath(executableName, options) {
-  return new PinkiePromise(function executor(resolve, reject) {
+  return new Promise(function executor(resolve, reject) {
     realExecutablePathCallback(executableName, options, function callback(err, filePath) {
       if (err) {
         reject(err);
