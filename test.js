@@ -31,7 +31,7 @@ test('realExecutablePath()', t => {
   realExecutablePath(['array'], undefined).then(t.fail, err => {
     t.equal(
       err.message,
-      'array is not a string. Expected a string of a specific executable name in the PATH.',
+      '[ \'array\' ] is not a string. Expected a string of a specific executable name in the PATH.',
       'should fail when it takes an invalid argument.'
     );
   }).catch(t.fail);

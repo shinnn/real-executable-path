@@ -30,7 +30,7 @@
     "asynchronously"
   ],
   "dependencies": {
-    "real-executable-path-callback": "^1.0.0"
+    "real-executable-path-callback": "^2.0.0"
   },
   "devDependencies": {
     "@shinnn/eslint-config-node": "^2.0.0",

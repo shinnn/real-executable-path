@@ -48,19 +48,10 @@ It finds the first instance of the given executable in the [PATH](http://pubs.op
 Options except for `all` option are used as [`which`](https://github.com/npm/node-which) [options](https://github.com/npm/node-which#options), and `option.cache` is used as `cache` of [`fs.realpath`](https://nodejs.org/api/fs.html#fs_fs_realpath_path_cache_callback).
 
 ```javascript
-'use strict';
-
-const path = require('path');
-const realExecutablePath = require('real-executable-path');
-
-realExecutablePath('foo', {
-  path: 'binaries',
-  cache: {
-    [path.resolve('binaries/foo')]: '/usr/local/lib/node_modules/foo/bin/foo'
-  }
-}).then((err, resolvedPath) => {
-  resolvedPath; //=> '/usr/local/lib/node_modules/foo/bin/foo'
-}, console.error);
+realExecutablePath('this_cmd_not_installed').catch(err => {
+  err.message; //=> 'not found: this_cmd_not_installed'
+  err.code; //=> 'ENOENT'
+});
 ```
 
 ## Related projects
