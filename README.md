@@ -16,7 +16,7 @@ which('npm', (err, binPath) => {
   binPath; //=> '/usr/local/bin/npm'
 });
 
-realExecutablePath('npm').then(binPath) => {
+realExecutablePath('npm').then(binPath => {
   binPath; //=> '/usr/local/lib/node_modules/npm/bin/npm-cli.js'
 });
 ```
@@ -38,14 +38,10 @@ const realExecutablePath = require('real-executable-path');
 ### realExecutablePath(*binName* [, *options*])
 
 *binName*: `String` (an executable name in the PATH)  
-*options*: `Object`  
+*options*: `Object` ([`node-which` options](https://github.com/npm/node-which#options) except for `all`)  
 Return: [`Promise`](http://www.ecma-international.org/ecma-262/6.0/#sec-promise-constructor) instance
 
 It finds the first instance of the given executable in the [PATH](http://pubs.opengroup.org/onlinepubs/000095399/basedefs/xbd_chap08.html#tag_08_03) environment variable, expands all symbolic links and resolves the canonicalized absolute pathname.
-
-#### options
-
-Options except for `all` option are used as [`which`](https://github.com/npm/node-which) [options](https://github.com/npm/node-which#options), and `option.cache` is used as `cache` of [`fs.realpath`](https://nodejs.org/api/fs.html#fs_fs_realpath_path_cache_callback).
 
 ```javascript
 realExecutablePath('this_cmd_not_installed').catch(err => {
