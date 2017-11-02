@@ -1,10 +1,8 @@
 # real-executable-path
 
-[![NPM version](https://img.shields.io/npm/v/real-executable-path.svg)](https://www.npmjs.com/package/real-executable-path)
+[![npm version](https://img.shields.io/npm/v/real-executable-path.svg)](https://www.npmjs.com/package/real-executable-path)
 [![Build Status](https://travis-ci.org/shinnn/real-executable-path.svg?branch=master)](https://travis-ci.org/shinnn/real-executable-path)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/real-executable-path.svg)](https://coveralls.io/github/shinnn/real-executable-path)
-[![Dependency Status](https://david-dm.org/shinnn/real-executable-path.svg)](https://david-dm.org/shinnn/real-executable-path)
-[![devDependency Status](https://david-dm.org/shinnn/real-executable-path/dev-status.svg)](https://david-dm.org/shinnn/real-executable-path#info=devDependencies)
 
 Find the first instance of an executable in the PATH, with expanding all symbolic links
 
@@ -23,7 +21,7 @@ realExecutablePath('npm').then(binPath => {
 
 ## Installation
 
-[Use npm.](https://docs.npmjs.com/cli/install)
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/getting-started/what-is-npm).
 
 ```
 npm install real-executable-path
@@ -37,7 +35,7 @@ const realExecutablePath = require('real-executable-path');
 
 ### realExecutablePath(*binName* [, *options*])
 
-*binName*: `String` (an executable name in the PATH)  
+*binName*: `string` (an executable name in the PATH)  
 *options*: `Object` ([`node-which` options](https://github.com/npm/node-which#options) except for `all`)  
 Return: [`Promise`](http://www.ecma-international.org/ecma-262/6.0/#sec-promise-constructor) instance
 
@@ -52,12 +50,10 @@ realExecutablePath('this_cmd_not_installed').catch(err => {
 
 ## Related projects
 
-* [real-executable-path-callback](https://github.com/shinnn/real-executable-path-callback) ([Callback](http://thenodeway.io/posts/understanding-error-first-callbacks/)-style version)
-* [real-executable-paths](https://github.com/shinnn/real-executable-paths) (Returns all matched paths, instead of just the first one)
-* [real-which](https://github.com/shinnn/real-which) (CLI)
+* [real-executable-path-callback](https://github.com/shinnn/real-executable-path-callback) – Traditional [Callback](http://thenodeway.io/posts/understanding-error-first-callbacks/)-style version
+* [real-executable-paths](https://github.com/shinnn/real-executable-paths) – Returns all matched paths, instead of just the first one
+* [real-which](https://github.com/shinnn/real-which) – CLI
 
 ## License
 
-Copyright (c) 2015 - 2016 [Shinnosuke Watanabe](https://github.com/shinnn)
-
-Licensed under [the MIT License](./LICENSE).
+[ISC License](./LICENSE) © 2017 Shinnosuke Watanabe
