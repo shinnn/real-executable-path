@@ -1,46 +1,60 @@
 'use strict';
 
-const path = require('path');
+const {join, resolve} = require('path');
 
 const realExecutablePath = require('.');
 const test = require('tape');
 
-process.env.PATH = path.join('node_modules', '.bin');
+process.env.PATH = join('node_modules', '.bin');
 
-test('realExecutablePath()', t => {
-	t.plan(6);
+test('realExecutablePath()', async t => {
+	t.equal(
+		await realExecutablePath('eslint'),
+		resolve('node_modules/eslint/bin/eslint.js'),
+		'should resolve an executable path.'
+	);
 
-	t.equal(realExecutablePath.name, 'realExecutablePath', 'should have a function name.');
+	try {
+		await realExecutablePath('foobarbazqux');
+	} catch ({message}) {
+		t.equal(message, 'not found: foobarbazqux', 'should fail when it cannot find a path.');
+	}
 
-	realExecutablePath('eslint').then(binPath => {
+	try {
+		await realExecutablePath('eslint', {path: 'foobarbazqux'});
+	} catch ({message}) {
+		t.equal(message, 'not found: eslint', 'should accept options.');
+	}
+
+	try {
+		await realExecutablePath([-0]);
+	} catch ({message}) {
 		t.equal(
-			binPath,
-			path.resolve('node_modules/eslint/bin/eslint.js'),
-			'should resolve an executable path.'
-		);
-	}).catch(t.fail);
-
-	realExecutablePath('foobarbazqux', null).then(t.fail, err => {
-		t.equal(err.message, 'not found: foobarbazqux', 'should fail when it cannot find a path.');
-	}).catch(t.fail);
-
-	realExecutablePath('eslint', {path: 'foobarbazqux'}).then(t.fail, err => {
-		t.equal(err.message, 'not found: eslint', 'should accept options.');
-	}).catch(t.fail);
-
-	realExecutablePath([-0], undefined).then(t.fail, err => {
-		t.equal(
-			err.message,
-			'Expected an executable name inside the PATH (<string>), but got a non-string value [ -0 ] (array).',
+			message,
+			'Expected an executable name inside the PATH (<string>), for exmaple `ls`, `git` and `node`, but got a non-string value [ -0 ] (array).',
 			'should fail when it takes an invalid argument.'
 		);
-	}).catch(t.fail);
+	}
 
-	realExecutablePath().then(t.fail, err => {
+	try {
+		await realExecutablePath();
+	} catch ({message}) {
 		t.equal(
-			err.message,
-			'Expected an executable name inside the PATH (<string>), but got a non-string value undefined.',
+			message,
+			'Expected 1 or 2 arguments (<string>[, <Object>]), but got no arguments.',
 			'should fail when it takes no arguments.'
 		);
-	}).catch(t.fail);
+	}
+
+	try {
+		await realExecutablePath('_', {}, {});
+	} catch ({message}) {
+		t.equal(
+			message,
+			'Expected 1 or 2 arguments (<string>[, <Object>]), but got 3 arguments.',
+			'should fail when it takes too many arguments.'
+		);
+	}
+
+	t.end();
 });
