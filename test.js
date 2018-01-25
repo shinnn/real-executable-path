@@ -1,6 +1,6 @@
 'use strict';
 
-const {join, resolve} = require('path');
+const {join} = require('path');
 
 const realExecutablePath = require('.');
 const test = require('tape');
@@ -10,7 +10,7 @@ process.env.PATH = join('node_modules', '.bin');
 test('realExecutablePath()', async t => {
 	t.equal(
 		await realExecutablePath('eslint'),
-		resolve('node_modules/eslint/bin/eslint.js'),
+		join(__dirname, 'node_modules', ...process.platform === 'win32' ? ['.bin', 'eslint.CMD'] : ['eslint', 'bin', 'eslint.js']),
 		'should resolve an executable path.'
 	);
 
