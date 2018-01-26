@@ -1,6 +1,6 @@
 {
 	"name": "real-executable-path",
-	"version": "3.0.0-1",
+	"version": "3.0.0",
 	"description": "Find the first instance of an executable in the PATH, with expanding all symbolic links",
 	"repository": "shinnn/real-executable-path",
 	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
@@ -36,7 +36,7 @@
 	},
 	"devDependencies": {
 		"@shinnn/eslint-config-node": "^5.0.0",
-		"eslint": "^4.15.0",
+		"eslint": "^4.16.0",
 		"nyc": "^11.4.1",
 		"tape": "^4.8.0"
 	},
