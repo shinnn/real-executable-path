@@ -1,28 +1,23 @@
 # real-executable-path
 
 [![npm version](https://img.shields.io/npm/v/real-executable-path.svg)](https://www.npmjs.com/package/real-executable-path)
-[![Build Status](https://travis-ci.org/shinnn/real-executable-path.svg?branch=master)](https://travis-ci.org/shinnn/real-executable-path)
+[![Build Status](https://travis-ci.com/shinnn/real-executable-path.svg?branch=master)](https://travis-ci.com/shinnn/real-executable-path)
 [![Build status](https://ci.appveyor.com/api/projects/status/s8j59go8rxlkiq5c/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/real-executable-path/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/real-executable-path.svg)](https://coveralls.io/github/shinnn/real-executable-path)
 
-Find the first instance of an executable in the PATH, with expanding all symbolic links
+A [Node.js](https://nodejs.org) module to find the first instance of an executable in the PATH, with expanding all symbolic links
 
 ```javascript
 const realExecutablePath = require('real-executable-path');
-const which = require('which');
 
-which('npm', (err, binPath) => {
-  binPath; //=> '/usr/local/bin/npm'
-});
-
-realExecutablePath('npm').then(binPath => {
-  binPath; //=> '/usr/local/lib/node_modules/npm/bin/npm-cli.js'
-});
+(async () => {
+  await realExecutablePath('npm'); //=> '/usr/local/lib/node_modules/npm/bin/npm-cli.js'
+})();
 ```
 
 ## Installation
 
-[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/getting-started/what-is-npm).
+[Use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com/about-npm/).
 
 ```
 npm install real-executable-path
@@ -49,4 +44,4 @@ It finds the first instance of the given executable in the [PATH](http://pubs.op
 
 ## License
 
-[ISC License](./LICENSE) © 2017 - 2018 Shinnosuke Watanabe
+[ISC License](./LICENSE) © 2017 - 2019 Shinnosuke Watanabe
