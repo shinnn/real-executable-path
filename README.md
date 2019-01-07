@@ -2,7 +2,6 @@
 
 [![npm version](https://img.shields.io/npm/v/real-executable-path.svg)](https://www.npmjs.com/package/real-executable-path)
 [![Build Status](https://travis-ci.com/shinnn/real-executable-path.svg?branch=master)](https://travis-ci.com/shinnn/real-executable-path)
-[![Build status](https://ci.appveyor.com/api/projects/status/s8j59go8rxlkiq5c/branch/master?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe/real-executable-path/branch/master)
 [![Coverage Status](https://img.shields.io/coveralls/shinnn/real-executable-path.svg)](https://coveralls.io/github/shinnn/real-executable-path)
 
 A [Node.js](https://nodejs.org) module to find the first instance of an executable in the PATH, with expanding all symbolic links
